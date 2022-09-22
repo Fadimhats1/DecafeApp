@@ -13,7 +13,22 @@ https://drive.google.com/file/d/1yNCGRuzTtg7onF_hO7GedkMnjo_zhCen/view?usp=shari
 
 ## About the project
 
-### Ordering some Food and Drink
+### Order food and drink
 
 ![](https://github.com/Fadimhats1/DecafeApp/blob/main/about/OrderFoodDrink.gif)
+
+### Add, substract, and clear all order
+
+![](https://github.com/Fadimhats1/DecafeApp/blob/main/about/AddandSubstractOrder.gif)
+
+### Search food and drink
+
+![](https://github.com/Fadimhats1/DecafeApp/blob/main/about/SearchFoodDrink.gif)
+
+
+### Add notes for the specific order, add and substract order
+
+![](https://github.com/Fadimhats1/DecafeApp/blob/main/about/dll.gif)
+
+
 
