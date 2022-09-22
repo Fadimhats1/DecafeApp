@@ -52,275 +52,235 @@ class _CheckoutPageState extends State<CheckoutPage>
   Widget build(BuildContext context) {
     tax = (subTotalCheckOut * (10 / 100)).toInt();
     grandTotal = subTotalCheckOut + tax;
-    return WillPopScope(child: Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Row(
-          children: [
-            Flexible(
-              flex: 1,
-              child: Container(
-                color: Color.fromRGBO(242, 242, 242, 1),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Image.asset('assets/Logo.png'),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: RotatedBox(
-                        quarterTurns: 1,
-                        child: TabBar(
-                          physics: NeverScrollableScrollPhysics(),
-                          enableFeedback: false,
-                          onTap: (index) {
-                            setState(() {
-                              _tabCategory!.index = 0;
-                            });
-                          },
-                          controller: _tabCategory,
-                          indicator: BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          tabs: tabCategories(widget.categories),
+    return WillPopScope(
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Container(
+            height: MediaQuery.of(context).size.height,
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    color: Color.fromRGBO(242, 242, 242, 1),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Image.asset('assets/Logo.png'),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 10,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    32, 16, 32, MediaQuery.of(context).padding.bottom + 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "Checkout",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 12,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Material(
-                              borderRadius: BorderRadius.circular(
-                                5,
+                        Expanded(
+                          flex: 7,
+                          child: RotatedBox(
+                            quarterTurns: 1,
+                            child: TabBar(
+                              physics: NeverScrollableScrollPhysics(),
+                              enableFeedback: false,
+                              onTap: (index) {
+                                setState(() {
+                                  _tabCategory!.index = 0;
+                                });
+                              },
+                              controller: _tabCategory,
+                              indicator: BoxDecoration(
+                                color: Colors.transparent,
                               ),
-                              elevation: 3,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 6, vertical: 8),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.grey.shade400,
-                                  ),
+                              tabs: tabCategories(widget.categories),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 10,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        32, 16, 32, MediaQuery.of(context).padding.bottom + 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Checkout",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 12,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Material(
                                   borderRadius: BorderRadius.circular(
                                     5,
                                   ),
-                                  color: Colors.white,
-                                ),
-                                child: ListView.builder(
-                                  itemCount: widget.orders != null
-                                      ? widget.orders.length
-                                      : 0,
-                                  itemBuilder: ((context, index) =>
-                                      cardCheckoutModel(widget.orders[index])),
+                                  elevation: 3,
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 6, vertical: 8),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.grey.shade400,
+                                      ),
+                                      borderRadius: BorderRadius.circular(
+                                        5,
+                                      ),
+                                      color: Colors.white,
+                                    ),
+                                    child: ListView.builder(
+                                      itemCount: widget.orders != null
+                                          ? widget.orders.length
+                                          : 0,
+                                      itemBuilder: ((context, index) =>
+                                          cardCheckoutModel(
+                                              widget.orders[index])),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 24,
-                          ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  flex: 3,
-                                  child: Material(
-                                    borderRadius: BorderRadius.circular(
-                                      5,
-                                    ),
-                                    elevation: 3,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Colors.grey.shade400,
-                                        ),
+                              SizedBox(
+                                width: 24,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      flex: 3,
+                                      child: Material(
                                         borderRadius: BorderRadius.circular(
                                           5,
                                         ),
-                                        color: Colors.white,
-                                      ),
-                                      child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              flex: 7,
-                                              child: FractionallySizedBox(
-                                                widthFactor: 1,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    FractionallySizedBox(
-                                                      widthFactor: 1,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          border: Border(
-                                                            bottom: BorderSide(
-                                                              width: 1,
-                                                              color: Colors.grey
-                                                                  .shade400,
+                                        elevation: 3,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              color: Colors.grey.shade400,
+                                            ),
+                                            borderRadius: BorderRadius.circular(
+                                              5,
+                                            ),
+                                            color: Colors.white,
+                                          ),
+                                          child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  flex: 7,
+                                                  child: FractionallySizedBox(
+                                                    widthFactor: 1,
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        FractionallySizedBox(
+                                                          widthFactor: 1,
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border: Border(
+                                                                bottom:
+                                                                    BorderSide(
+                                                                  width: 1,
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade400,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                              horizontal: 24,
+                                                            ),
+                                                            alignment: Alignment
+                                                                .centerLeft,
+                                                            height: 60,
+                                                            child: Text(
+                                                              "Payment Receipt",
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 28),
                                                             ),
                                                           ),
                                                         ),
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal: 24,
-                                                        ),
-                                                        alignment: Alignment
-                                                            .centerLeft,
-                                                        height: 60,
-                                                        child: Text(
-                                                          "Payment Receipt",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 28),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child:
-                                                          FractionallySizedBox(
-                                                        widthFactor: 1,
-                                                        child: Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                                  horizontal:
-                                                                      24,
-                                                                  vertical: 12),
+                                                        Expanded(
                                                           child:
-                                                              ListView.builder(
-                                                            itemCount:
-                                                                widget.orders !=
+                                                              FractionallySizedBox(
+                                                            widthFactor: 1,
+                                                            child: Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          24,
+                                                                      vertical:
+                                                                          12),
+                                                              child: ListView
+                                                                  .builder(
+                                                                itemCount: widget
+                                                                            .orders !=
                                                                         null
                                                                     ? widget
                                                                         .orders
                                                                         .length
                                                                     : 0,
-                                                            itemBuilder: ((context,
-                                                                    index) =>
-                                                                paymentProductList(
-                                                                  widget.orders[
-                                                                      index],
-                                                                )),
+                                                                itemBuilder: ((context,
+                                                                        index) =>
+                                                                    paymentProductList(
+                                                                      widget.orders[
+                                                                          index],
+                                                                    )),
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Expanded(
-                                              flex: 3,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  border: Border(
-                                                    top: BorderSide(
-                                                      width: 1,
-                                                      color:
-                                                          Colors.grey.shade400,
+                                                      ],
                                                     ),
                                                   ),
-                                                  // color: Colors.red,
                                                 ),
-                                                child: Column(
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                          horizontal: 24,
-                                                          vertical: 12,
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      border: Border(
+                                                        top: BorderSide(
+                                                          width: 1,
+                                                          color: Colors
+                                                              .grey.shade400,
                                                         ),
-                                                        child: Column(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              children: [
-                                                                Text(
-                                                                  "Subtotal",
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Color
-                                                                        .fromRGBO(
-                                                                            147,
-                                                                            147,
-                                                                            147,
-                                                                            1),
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                                ),
-                                                                Text(
-                                                                  "Rp. " +
-                                                                      formatter
-                                                                          .format(
-                                                                              subTotalCheckOut),
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Color
-                                                                        .fromRGBO(
-                                                                            147,
-                                                                            147,
-                                                                            147,
-                                                                            1),
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                  ),
-                                                                ),
-                                                              ],
+                                                      ),
+                                                      // color: Colors.red,
+                                                    ),
+                                                    child: Column(
+                                                      children: [
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                              horizontal: 24,
+                                                              vertical: 12,
                                                             ),
-                                                            Row(
+                                                            child: Column(
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
-                                                                      .spaceBetween,
+                                                                      .spaceAround,
                                                               children: [
                                                                 Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
                                                                   children: [
                                                                     Text(
-                                                                      "Taxes ",
+                                                                      "Subtotal",
                                                                       style:
                                                                           TextStyle(
                                                                         color: Color.fromRGBO(
@@ -335,7 +295,9 @@ class _CheckoutPageState extends State<CheckoutPage>
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      "(10%)",
+                                                                      "Rp. " +
+                                                                          formatter
+                                                                              .format(subTotalCheckOut),
                                                                       style:
                                                                           TextStyle(
                                                                         color: Color.fromRGBO(
@@ -344,18 +306,101 @@ class _CheckoutPageState extends State<CheckoutPage>
                                                                             147,
                                                                             1),
                                                                         fontSize:
-                                                                            18,
+                                                                            20,
                                                                         fontWeight:
                                                                             FontWeight.w600,
                                                                       ),
                                                                     ),
                                                                   ],
                                                                 ),
+                                                                Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    Row(
+                                                                      children: [
+                                                                        Text(
+                                                                          "Taxes ",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color: Color.fromRGBO(
+                                                                                147,
+                                                                                147,
+                                                                                147,
+                                                                                1),
+                                                                            fontSize:
+                                                                                20,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+                                                                          "(10%)",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color: Color.fromRGBO(
+                                                                                147,
+                                                                                147,
+                                                                                147,
+                                                                                1),
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Text(
+                                                                      "Rp. " +
+                                                                          formatter
+                                                                              .format(tax),
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color.fromRGBO(
+                                                                            147,
+                                                                            147,
+                                                                            147,
+                                                                            1),
+                                                                        fontSize:
+                                                                            20,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          height: 55,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            border: Border(
+                                                              top: BorderSide(
+                                                                width: 1,
+                                                                color: Colors
+                                                                    .grey
+                                                                    .shade400,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .symmetric(
+                                                                    horizontal:
+                                                                        24),
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
                                                                 Text(
-                                                                  "Rp. " +
-                                                                      formatter
-                                                                          .format(
-                                                                              tax),
+                                                                  "Grand Total",
                                                                   style:
                                                                       TextStyle(
                                                                     color: Color
@@ -365,7 +410,23 @@ class _CheckoutPageState extends State<CheckoutPage>
                                                                             147,
                                                                             1),
                                                                     fontSize:
-                                                                        20,
+                                                                        24,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  "Rp. " +
+                                                                      formatter
+                                                                          .format(
+                                                                              grandTotal),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Colors
+                                                                        .red,
+                                                                    fontSize:
+                                                                        24,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w600,
@@ -373,188 +434,138 @@ class _CheckoutPageState extends State<CheckoutPage>
                                                                 ),
                                                               ],
                                                             ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 55,
-                                                      decoration: BoxDecoration(
-                                                        border: Border(
-                                                          top: BorderSide(
-                                                            width: 1,
-                                                            color: Colors
-                                                                .grey.shade400,
                                                           ),
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 24),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Text(
-                                                              "Grand Total",
-                                                              style: TextStyle(
-                                                                color: Color
-                                                                    .fromRGBO(
-                                                                        147,
-                                                                        147,
-                                                                        147,
-                                                                        1),
-                                                                fontSize: 24,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              "Rp. " +
-                                                                  formatter.format(
-                                                                      grandTotal),
-                                                              style: TextStyle(
-                                                                color:
-                                                                    Colors.red,
-                                                                fontSize: 24,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            )
-                                          ]),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                )
+                                              ]),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 16,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      Expanded(
-                                        flex: 5,
-                                        child: switchDineIn(),
-                                      ),
-                                      SizedBox(
-                                        height: 14,
-                                      ),
-                                      Expanded(
-                                        flex: 7,
-                                        child: Material(
-                                          elevation: 3,
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Color.fromRGBO(
-                                                  148, 180, 159, 1),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          Expanded(
+                                            flex: 5,
+                                            child: switchDineIn(),
+                                          ),
+                                          SizedBox(
+                                            height: 14,
+                                          ),
+                                          Expanded(
+                                            flex: 7,
+                                            child: Material(
+                                              elevation: 3,
                                               borderRadius:
                                                   BorderRadius.circular(50),
-                                            ),
-                                            child: Material(
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                                color: Colors.transparent,
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    var postOrder = Order(
-                                                        isDinein:
-                                                            _tabDineIn!.index !=
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromRGBO(
+                                                      148, 180, 159, 1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                ),
+                                                child: Material(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            50),
+                                                    color: Colors.transparent,
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        var postOrder = Order(
+                                                            isDinein: _tabDineIn!
+                                                                        .index !=
                                                                     1
                                                                 ? true
                                                                 : false,
-                                                        listOrder: widget.orders
-                                                            .map((e) =>
-                                                                e.toJson())
-                                                            .toList());
+                                                            listOrder: widget
+                                                                .orders
+                                                                .map((e) =>
+                                                                    e.toJson())
+                                                                .toList());
 
-                                                    postData.post(
-                                                      postOrder.toJson(),
-                                                    );
-                                                    widget.orders.clear();
-                                                    showOrderAccept()
-                                                        .then((value) {
-                                                      Navigator.pop(context,
-                                                          widget.orders);
-                                                    });
-                                                  },
+                                                        postData.post(
+                                                          postOrder.toJson(),
+                                                        );
+                                                        widget.orders.clear();
+                                                        showOrderAccept()
+                                                            .then((value) {
+                                                          Navigator.pop(context,
+                                                              widget.orders);
+                                                        });
+                                                      },
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Order Food",
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontSize: 24,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    )),
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            flex: 7,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Material(
+                                                color: Colors.transparent,
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                child: InkWell(
                                                   borderRadius:
-                                                      BorderRadius.circular(50),
+                                                      BorderRadius.circular(20),
+                                                  onTap: () {
+                                                    Navigator.pop(
+                                                        context, widget.orders);
+                                                  },
                                                   child: Center(
                                                     child: Text(
-                                                      "Order Food",
+                                                      "Cancel Order",
                                                       style: TextStyle(
-                                                        color: Colors.white,
+                                                        color: Colors.red,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                         fontSize: 24,
                                                       ),
                                                     ),
                                                   ),
-                                                )),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        flex: 7,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: InkWell(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              onTap: () {
-                                                Navigator.pop(
-                                                    context, widget.orders);
-                                              },
-                                              child: Center(
-                                                child: Text(
-                                                  "Cancel Order",
-                                                  style: TextStyle(
-                                                    color: Colors.red,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 24,
-                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-    ), onWillPop:() async => false
-     );
+        onWillPop: () async => false);
   }
 
   List<Widget> tabCategories(List<Categories> dataCategory) {
@@ -728,6 +739,7 @@ class _CheckoutPageState extends State<CheckoutPage>
           onTap: () {
             setState(() {
               giveNote().then((value) => order.notes = _notes.text);
+              _notes.clear();
             });
           },
           borderRadius: BorderRadius.circular(4),
@@ -1060,6 +1072,8 @@ class _CheckoutPageState extends State<CheckoutPage>
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
+                        setState(() {
+                        });
                       },
                       child: Text(
                         "Done",
