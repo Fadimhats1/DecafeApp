@@ -1,16 +1,12 @@
 # decafe_app
 
-A new Flutter project.
+The Decafe app is a mobile application that can help the performance of a restaurant, cafe or diner in terms of transactions. This Decafe application can be used as a self-service food ordering application or a cashier application
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+**This Application only work properly on device with screen size 2560x1600 pixel (Nexus 10) or higher (Ipad/Android Tablet)**
 
-A few resources to get you started if this is your first Flutter project:
+You can download the application on link below:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+https://drive.google.com/file/d/1yNCGRuzTtg7onF_hO7GedkMnjo_zhCen/view?usp=sharing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
