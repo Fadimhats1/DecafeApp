@@ -9,3 +9,4 @@ The DecafeApp is a mobile application that can help the performance of a restaur
 You can download the application on link below:
 https://drive.google.com/file/d/1yNCGRuzTtg7onF_hO7GedkMnjo_zhCen/view?usp=sharing
 
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
