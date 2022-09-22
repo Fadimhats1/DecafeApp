@@ -10,3 +10,8 @@ You can download the application on link below:
 https://drive.google.com/file/d/1yNCGRuzTtg7onF_hO7GedkMnjo_zhCen/view?usp=sharing
 
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+## About the project
+
+### Ordering some Food and Drink
+
