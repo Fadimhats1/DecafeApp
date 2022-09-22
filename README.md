@@ -11,7 +11,7 @@ https://drive.google.com/file/d/1yNCGRuzTtg7onF_hO7GedkMnjo_zhCen/view?usp=shari
 
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
-## About the project
+## Features this app has
 
 ### Order food and drink
 
